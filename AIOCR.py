@@ -92,8 +92,12 @@ transform = transforms.Compose([
 
 # Create dataset and dataloader
 # Replace with your actual data paths and labels
-dataset = OCRDataset(image_paths=['image1.png', 'image2.png'], 
-                    labels=["In the months leading up to the construction of Castle Ravenloft, this room was occupied by the castle's archi- tect, a wizard named Artimus. He built a scale model of the castle out of magically sculpted rock. Anyone who has seen the castle recognizes this replica for what it is. The ceiling here is 15 feet high. A secret door in the south wall can be pulled open to a staircase landing (area X21). ", 'To do this: 1. In a project, go to Code > Merge requests. 2. Select Bulk edit. A sidebar on the right-hand side of your screen appears with editable fields. 3. Select the checkboxes next to each merge request you want to edit. 4. Select the appropriate fields and their values from the sidebar. 5.Select Update selected. '],
+# dataset = OCRDataset(image_paths=['image1.png', 'image2.png'], 
+#                     labels=["In the months leading up to the construction of Castle Ravenloft, this room was occupied by the castle's archi- tect, a wizard named Artimus. He built a scale model of the castle out of magically sculpted rock. Anyone who has seen the castle recognizes this replica for what it is. The ceiling here is 15 feet high. A secret door in the south wall can be pulled open to a staircase landing (area X21). ", 'To do this: 1. In a project, go to Code > Merge requests. 2. Select Bulk edit. A sidebar on the right-hand side of your screen appears with editable fields. 3. Select the checkboxes next to each merge request you want to edit. 4. Select the appropriate fields and their values from the sidebar. 5.Select Update selected. '],
+#                     transform=transform)
+
+dataset = OCRDataset(image_paths=['image1.png'], 
+                    labels=["In the months leading up to the construction of Castle Ravenloft, this room was occupied by the castle's archi- tect, a wizard named Artimus. He built a scale model of the castle out of magically sculpted rock. Anyone who has seen the castle recognizes this replica for what it is. The ceiling here is 15 feet high. A secret door in the south wall can be pulled open to a staircase landing (area X21). "],
                     transform=transform)
 
 train_loader = DataLoader(dataset, batch_size=32, shuffle=True)
