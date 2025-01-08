@@ -2,8 +2,9 @@
 
 # to use this on compute server:
 #     ssh wmr440@3.compute.vu.nl and login
-#     cd /local/data/wmr440/files
-#     scp /home/william/Documents/personal/aibenchmark.py wmr440@3.compute.vu.nl:/local/data/wmr440/files
+#     cd /local/data/wmr440/files/AIOCR
+#     git pull
+#     conda activate AI
 
 
 import torch
