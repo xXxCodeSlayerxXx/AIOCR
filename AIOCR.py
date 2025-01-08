@@ -83,30 +83,25 @@ def train_model(model, train_loader, criterion, optimizer, num_epochs=10):
             
         print(f'Epoch {epoch+1}, Loss: {running_loss/len(train_loader)}')
 
-# Example usage
-def main():
-    # Define transforms
-    transform = transforms.Compose([
-        transforms.Resize((32, 128)),  # Resize images to fixed size
-        transforms.ToTensor(),
-        transforms.Normalize(mean=[0.5], std=[0.5])
-    ])
-    
-    # Create dataset and dataloader
-    # Replace with your actual data paths and labels
-    dataset = OCRDataset(image_paths=['path1.png', 'path2.png'], 
-                        labels=['text1', 'text2'],
-                        transform=transform)
-    
-    train_loader = DataLoader(dataset, batch_size=32, shuffle=True)
-    
-    # Initialize model, loss, and optimizer
-    model = SimpleCNN(num_chars=len(dataset.char_to_idx))
-    criterion = nn.CrossEntropyLoss()
-    optimizer = torch.optim.Adam(model.parameters(), lr=0.001)
-    
-    # Train the model
-    train_model(model, train_loader, criterion, optimizer)
+# Define transforms
+transform = transforms.Compose([
+    transforms.Resize((32, 128)),  # Resize images to fixed size
+    transforms.ToTensor(),
+    transforms.Normalize(mean=[0.5], std=[0.5])
+])
 
-if __name__ == "__main__":
-    main()
+# Create dataset and dataloader
+# Replace with your actual data paths and labels
+dataset = OCRDataset(image_paths=['image1.png', 'image2.png'], 
+                    labels=["In the months leading up to the construction of Castle Ravenloft, this room was occupied by the castle's archi- tect, a wizard named Artimus. He built a scale model of the castle out of magically sculpted rock. Anyone who has seen the castle recognizes this replica for what it is. The ceiling here is 15 feet high. A secret door in the south wall can be pulled open to a staircase landing (area X21). ", 'To do this: 1. In a project, go to Code > Merge requests. 2. Select Bulk edit. A sidebar on the right-hand side of your screen appears with editable fields. 3. Select the checkboxes next to each merge request you want to edit. 4. Select the appropriate fields and their values from the sidebar. 5.Select Update selected. '],
+                    transform=transform)
+
+train_loader = DataLoader(dataset, batch_size=32, shuffle=True)
+
+# Initialize model, loss, and optimizer
+model = SimpleCNN(num_chars=len(dataset.char_to_idx))
+criterion = nn.CrossEntropyLoss()
+optimizer = torch.optim.Adam(model.parameters(), lr=0.001)
+
+# Train the model
+train_model(model, train_loader, criterion, optimizer)
